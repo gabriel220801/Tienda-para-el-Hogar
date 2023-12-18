@@ -6,52 +6,83 @@
     <!-- Include Bootstrap CSS from CDN -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/admin_custom.css">
+    <script defer src="https://app.embed.im/snow.js"></script>
+    <style>
+        body {
+            /* background-color: #f8f9fa; */
+            background-color: black;
+        }
+
+        .navbar {
+            background-color: #007bff;
+        }
+
+        .navbar-dark .navbar-nav .nav-link {
+            color: #ffffff;
+        }
+
+        .navbar-dark .navbar-toggler-icon {
+            background-color: #ffffff;
+        }
+
+        .container {
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        .card {
+            border: none;
+            transition: transform 0.2s;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+        }
+    </style>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container-fluid">
-
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
-                     <a class="nav-link" href="/productos/home">Ebanisteria</a>
+                    <a class="nav-link" href="/productos/home">Ebanisteria</a>
                     <a class="nav-link active" aria-current="page" href="/productos/muebles">Muebles</a>
                     <a class="nav-link" href="/productos/decoracion">Decoracion</a>
                     <a class="nav-link" href="/productos/herammientas">Herramientas y accesorios</a>
                     <a class="nav-link" href="/productos/almacenamientos">Almacenamientos</a>
-                    <a class="nav-link" href="/login">iniciar sesion </a>
+                    <a class="nav-link" href="/login">Iniciar Sesión</a>
                 </div>
             </div>
         </div>
     </nav>
 
-    <div class="container">
-    <div class="container">
-    <h1>muebles
-    </h1>
-    <div class="container">
-    <div class="row">
-        @foreach($producto as  $p)
-        <div class="col-3.5">
-            <div class="card" style="width: 25rem;">
-            <img class="card-img-top" src='{{ asset("img/$p->fotoproducto") }}' alt="Card image cap">
-
-                <div class="card-body">
-                    <h5 class="card-title">{{$p->nombre}}</h5>
-                    <p class="card-text">
-                        <b> descripcion: </b> {{$p->descripcion}}  <br>
-                        <b> categoria: </b> {{$p->categoria->nombre}}  <br>
-                        <b> precio: $ </b> {{$p->precio}}  <br>
-                    </p>
+    <div class="container mt-4">
+        <h1 class="text-center text-primary mb-4">Muebles</h1>
+        <div class="row">
+            @foreach($producto as $p)
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <img class="card-img-top" src='{{ asset("img/$p->fotoproducto") }}' alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">{{$p->nombre}}</h5>
+                        <p class="card-text">
+                            <b>Descripción:</b> {{$p->descripcion}} <br>
+                            <b>Categoría:</b> {{$p->categoria->nombre}} <br>
+                            <b>Precio: $</b>{{$p->precio}} <br>
+                        </p>
+                    </div>
                 </div>
             </div>
+            @endforeach
         </div>
-        @endforeach
-
     </div>
 
-</div>
-    </div>
-       
-    </div>
+    <!-- Bootstrap JS and other scripts if needed -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
