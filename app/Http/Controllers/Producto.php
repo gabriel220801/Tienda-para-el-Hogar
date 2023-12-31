@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use  App\Models\Product;
+use  App\Models\categoria;
 use  App\Models\mueble;
 use  App\Models\decoracion;
 use  App\Models\herramienta;
@@ -15,6 +16,8 @@ class Producto extends Controller
     $producto= Product::all();
     return view ('productos.listado', compact('producto'));
  }
+
+ 
  public function muebles(){
     $muebles= mueble::all();
     return view ('productos.muebles', compact('muebles'));
@@ -31,4 +34,13 @@ class Producto extends Controller
    $almacenamientos= almacenamiento::all();
     return view ('productos.almacenamientos',compact('almacenamientos') );
  }
+
+//  ADMINISTRADOR
+
+public function index(){
+   $query = Product::all(); // Select * from productos
+   return view('admin.productos.listado', ['query'=> $query]);
+}
+
+
 }

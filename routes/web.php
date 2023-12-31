@@ -35,6 +35,14 @@ require __DIR__.'/auth.php';
 
 Route::get('/productos/muebles', [App\Http\Controllers\Producto::class, 'muebles'])->name('listado_productom');
 Route::get('/productos/decoracion', [App\Http\Controllers\Producto::class, 'decoracion'])->name('listado_productoc');
-Route::get('/productos/herammientas', [App\Http\Controllers\Producto::class, 'herramientas'])->name('listado_productoh');
+Route::get('/productos/herramientas', [App\Http\Controllers\Producto::class, 'herramientas'])->name('listado_productoh');
 Route::get('/productos/almacenamientos', [App\Http\Controllers\Producto::class, 'almacenamiento'])->name('listado_productoa');
 Route::get('/productos/home', [App\Http\Controllers\Producto::class, 'home'])->name('listado_producto');
+
+
+// ADMINISTRADOR
+Route::get('admin/productos/listado', [Producto::class, 'index']
+)->middleware(['auth', 'verified'])->name('listado_productos');
+
+Route::get('admin/categorias/listado', [App\Http\Controllers\Category::class, 'index']
+)->middleware(['auth', 'verified'])->name('listado_categorias');
