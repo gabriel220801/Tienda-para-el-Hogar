@@ -19,19 +19,19 @@ class Producto extends Controller
 
    
    public function muebles(){
-      $muebles= mueble::all();
-      return view ('productos.muebles', compact('muebles'));
-   }
+      $muebles = Product::where('id_categoria', '=', 10)->get();
+      return view('productos.muebles', compact('muebles'));
+  }
    public function decoracion(){
-      $decoraciones= decoracion::all();
+      $decoraciones= Product::where('id_categoria', '=', 20)->get();
       return view ('productos.decoracion',  compact('decoraciones'));
    }
    public function herramientas(){
-      $herramientas= herramienta::all();
+      $herramientas= Product::where('id_categoria', '=', 30)->get();
       return view ('productos.herramientas',  compact('herramientas'));
    }
    public function almacenamiento(){
-      $almacenamientos= almacenamiento::all();
+      $herramientas= Product::where('id_categoria', '=', 40)->get();
       return view ('productos.almacenamientos',compact('almacenamientos') );
    }
 
