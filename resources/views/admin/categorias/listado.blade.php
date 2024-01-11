@@ -10,7 +10,9 @@
 @stop
 
 @section('content')
-
+<div class='container text-right'>
+    <a href={{route('form_registro_cat')}} class="btn btn-outline-success">Adicionar</a>
+</div>
 
 <br>
 <table class="table" id="table-category">
@@ -30,10 +32,16 @@
             <tr>
                 <th scope="row">{{$i}}</th>
                 <td>{{$c->id_categoria}}</td>
-                <td>{{$c->nombre}}</td>
+                <td>{{$c->nom_categoria}}</td>
                 <td>
-                        <a href="" class="btn btn-success">Editar</a>
-                        <a href="" class="btn btn-danger">Eliminar</a>        
+                    <div class="btn-group">
+                        <div class="mr-2">
+                            <a href="{{ route('editar_cat', $c->id_categoria) }}" class="btn btn-outline-primary">Editar</a>
+                        </div>
+                        <div>
+                            <a href="{{ route('eliminar_cat', $c->id_categoria) }}" class="btn btn-outline-danger">Eliminar</a>
+                        </div>
+                    </div>
                 </td>
                 @php 
                     $i = $i + 1;

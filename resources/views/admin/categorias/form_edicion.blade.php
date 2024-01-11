@@ -4,37 +4,44 @@
 @section('title', 'Dashboard')
 
 @section('content_header')
-    <h1>Actualizacion de Programas</h1>
     
 @stop
 
 @section('content')
-    <form action="{{url('/programas/editar', $programa->codprograma)}}" method="POST">
+<div class="centrado">
+<h1>Actualización de Categorias</h1>
+    <form action="{{ url('/admin/categorias/editar', $categoria->id_categoria) }}" method="POST">
         @csrf
         <div class="mb-3">
-            <label for="cod_programa" class="form-label">Codigo Programa</label>
-            <input type="text" class="form-control" id="cod_programa" name="cod_programa" value="{{$programa->codprograma}}">
+            <label for="id_categoria" class="form-label">Codigo Categoria</label>
+            <input type="text" class="form-control" id="id_categoria" name="id_categoria" value="{{ $categoria->id_categoria }}">
         </div>
         <div class="mb-3">
-            <label for="nom_programa" class="form-label">Nombre programa</label>
-            <input type="text" class="form-control" id="nom_programa" name="nom_programa" value="{{ $programa->nomprograma }}">
+            <label for="nom_categoria" class="form-label">Nombre Categoria</label>
+            <input type="text" class="form-control" id="nom_categoria" name="nom_categoria" value="{{ $categoria->nom_categoria }}">
         </div>
 
-        <div class="mb-3">
-            <label for="nom_facultad" class="form-label">Nombre Facultad</label>
-            <select class="form_select" arial-label="Default select example" name="facultades">
-            @foreach($facultad as $f)
-                <option value="{{$f->codfacultad}}">{{$f->nomfacultad}}</option>
-            @endforeach
-            </select>            
-        </div>
         
-        <button type="submit" class="btn btn-success">Editar</button>
+        <button type="submit" class="btn btn-outline-success">Editar</button>
     </form>
+    </div>
 @stop
 
 @section('css')
     <link rel="stylesheet" href="/css/admin_custom.css">
+    <style>
+    .centrado {
+        font-family: 'Times New Roman', Times, serif;
+        text-align: center;
+        max-width: 700px; /* Ajusta el ancho máximo según tus necesidades */
+        margin: 0 auto; /* Esto centrará horizontalmente el div */
+        padding: 20px; /* Añade un espacio interno para mejorar el aspecto */
+        border: 1px solid #ccc; /* Añade un borde para mayor claridad */
+        border-radius: 8px; /* Añade bordes redondeados */
+    }
+
+    
+</style>
 @stop
 
 @section('js')

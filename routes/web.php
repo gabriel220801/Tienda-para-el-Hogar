@@ -3,7 +3,16 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Producto;
+use App\Http\Controllers\Category;
+use App\Http\Controllers\Usuario;
 use  App\Models\Product;
+use  App\Models\almacenamiento;
+use  App\Models\categoria;
+use  App\Models\decoracion;
+use  App\Models\herramienta;
+use  App\Models\mueble;
+use  App\Models\Rol;
+use  App\Models\Users;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,6 +23,8 @@ use  App\Models\Product;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
+Route::get('/dashboard', [App\Http\Controllers\Dashboard::class, 'obtener']);
 
 Route::get('/', function () {
     $producto = Product::all(); // Obtener todos los productos
@@ -41,8 +52,62 @@ Route::get('/productos/home', [App\Http\Controllers\Producto::class, 'home'])->n
 
 
 // ADMINISTRADOR
-Route::get('admin/productos/listado', [Producto::class, 'index']
+Route::get('admin/productos/listado', [App\Http\Controllers\Producto::class, 'index']
 )->middleware(['auth', 'verified'])->name('listado_productos');
 
 Route::get('admin/categorias/listado', [App\Http\Controllers\Category::class, 'index']
 )->middleware(['auth', 'verified'])->name('listado_categorias');
+
+Route::get('admin/users/listado', [App\Http\Controllers\Usuario::class, 'index']
+)->middleware(['auth', 'verified'])->name('listado_usuarios');
+
+//AGREGAR MUEBLES
+
+Route::get('admin/productos/registrar', [App\Http\Controllers\Producto::class, 'form_registro']
+)->middleware(['auth', 'verified'])->name('form_registro_pro');
+
+Route::post('admin/productos/registrar', [App\Http\Controllers\Producto::class, 'registrar']
+)->middleware(['auth', 'verified'])->name('registrar_producto');
+
+//EDICION MUEBLES
+
+Route::get('admin/productos/editar/{id}', [App\Http\Controllers\Producto::class, 'form_edicion']
+)->middleware(['auth', 'verified'])->name('editar_pro');
+
+Route::post('admin/productos/editar/{id}', [App\Http\Controllers\Producto::class, 'editar']
+)->middleware(['auth', 'verified'])->name('editar_producto');
+
+//ELIMINAR MUEBLES
+
+Route::get('admin/productos/eliminar/{id}', [App\Http\Controllers\Producto::class, 'eliminar']
+)->middleware(['auth', 'verified'])->name('eliminar_pro');
+
+
+// AGREGAR CATEGORIAS
+
+Route::get('admin/categorias/registrar', [App\Http\Controllers\Category::class, 'form_registro']
+)->middleware(['auth', 'verified'])->name('form_registro_cat');
+
+Route::post('admin/categorias/registrar', [App\Http\Controllers\Category::class, 'registrar']
+)->middleware(['auth', 'verified'])->name('registrar_categoria');
+
+//EDICION CATEGORIAS
+
+Route::get('admin/categorias/editar/{id}', [App\Http\Controllers\Category::class, 'form_edicion']
+)->middleware(['auth', 'verified'])->name('editar_cat');
+
+Route::post('admin/categorias/editar/{id}', [App\Http\Controllers\Category::class, 'editar']
+)->middleware(['auth', 'verified'])->name('editar_categoria');
+
+//ELIMINAR CATEGORIAS
+
+Route::get('admin/categorias/eliminar/{id}', [App\Http\Controllers\Category::class, 'eliminar']
+)->middleware(['auth', 'verified'])->name('eliminar_cat');
+
+//ELIMINAR USUARIOS
+
+Route::get('admin/usuarios/eliminar/{id}', [App\Http\Controllers\Usuario::class, 'eliminar']
+)->middleware(['auth', 'verified'])->name('eliminar_usu');
+
+Route::get('register', [App\Http\Controllers\Auth\RegisteredUserController::class, 'store']
+)->name('registrar');

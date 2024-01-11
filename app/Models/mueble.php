@@ -14,4 +14,5 @@ class mueble extends Model
     public function categoria(){
         return $this->belongsTo(categoria::class, 'id_categoria', 'id_categoria');
     }
+    
 }

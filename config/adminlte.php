@@ -311,26 +311,31 @@ return [
             'url'  => 'admin/blog',
             'can'  => 'manage-blog',
         ],
-                
+        
+        [
+            'text' => 'Dashboard',
+            'url'  => 'dashboard',
+            'icon' => 'fas fa-fw fa-home',
+        ],
         
         [
             'text' => 'Productos',
             'url'  => 'admin/productos/listado',
-            'icon' => 'fas fa-fw fa-box',
+            'icon' => 'fas fa-fw fa-couch',
         ],
         [
             'text' => 'Categorias',
             'url'  => 'admin/categorias/listado',
-            'icon' => 'fas fa-fw fa-list',
+            'icon' => 'fas fa-fw fa-table',
         ],
         [
             'text' => 'Usuarios',
-            'url'  => 'admin/usuarios',
+            'url'  => 'admin/users/listado',
             'icon' => 'fas fa-fw fa-users',
         ],
         [
             'text'    => 'Inventario',
-            'icon'    => 'fas fa-fw fa-book',
+            'icon'    => 'fas fa-fw fa-chart-bar',
             'submenu' => [
                 [
                     'text' => 'Ventas',

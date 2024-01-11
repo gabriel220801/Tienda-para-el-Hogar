@@ -5,41 +5,46 @@
 @section('title', 'Dashboard')
 
 @section('content_header')
-    <h1>Registro de Programas</h1>
     
 @stop
 
 @section('content')
-
-    <form action="{{url('/programas/registrar')}}" method="POST">
+<div class="centrado">
+<h1>Registro de Categorias</h1>
+    <form action="{{ url('/admin/categorias/registrar') }}" method="POST">
         @csrf
         <div class="mb-3">
-            <label for="cod_programa" class="form-label">Código Programa</label>
-            <input type="text" class="form-control" id="cod_programa"  name="cod_programa" >
+            <label for="id_categoria" class="form-label">Codigo Categoria</label>
+            <input type="text" class="form-control" id="id_categoria"  name="id_categoria" >
         </div>
         <div class="mb-3">
-            <label for="nom_programa" class="form-label">Nombre Programa</label>
-            <input type="text" class="form-control" id="nom_programa" name="nom_programa">
+            <label for="nom_categoria" class="form-label">Nombre Categoria</label>
+            <input type="text" class="form-control" id="nom_categoria" name="nom_categoria">
         </div>
+        
 
-        <div class="mb-3">
-            <label for="facultad" class="form-label">Facultad</label>
-            <select class="form-control" aria-label="Facultades" name="facultad">
-                @foreach ($query as $q)
-                    <option value="{{$q->codfacultad}}">{{$q->nomfacultad}}</option>
-                @endforeach
-            </select>
-        </div>
-
-        <button type="submit" class="btn btn-success">Registrar</button>
+        <button type="submit" class="btn btn-outline-success">Registrar</button>
     </form>
 
-
+</div>
 
 @stop
 
 @section('css')
     <link rel="stylesheet" href="/css/admin_custom.css">
+    <style>
+    .centrado {
+        font-family: 'Times New Roman', Times, serif;
+        text-align: center;
+        max-width: 700px; /* Ajusta el ancho máximo según tus necesidades */
+        margin: 0 auto; /* Esto centrará horizontalmente el div */
+        padding: 20px; /* Añade un espacio interno para mejorar el aspecto */
+        border: 1px solid #ccc; /* Añade un borde para mayor claridad */
+        border-radius: 8px; /* Añade bordes redondeados */
+    }
+
+    
+</style>
 @stop
 
 @section('js')

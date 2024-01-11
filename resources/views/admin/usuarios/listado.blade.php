@@ -5,28 +5,23 @@
 @section('title', 'Dashboard')
 
 @section('content_header')
-    <h1>Productos</h1>
+    <h1>Usuarios</h1>
     
 @stop
 
 @section('content')
 
-<div class='container text-right'>
-    <a href={{route('form_registro_pro')}} class="btn btn-outline-success">Adicionar</a>
-</div>
 
 <br>
-
 <table class="table" id="table-products">
         <thead>
             <tr>
             <th scope="col">N°</th>
             <th scope="col">Codigo</th>
             <th scope="col">Nombre</th>
-            <th scope="col">Descripcion</th>
-            <th scope="col">Precio</th>
-            <th scope="col">Categoria</th>
-            <th scope="col">Imagen</th>
+            <th scope="col">Correo</th>
+            <th scope="col">Rol</th>
+            <th scope="col">Fecha Creacion</th>
             <th scope="col">Opciones</th>
             </tr>
         </thead>
@@ -34,26 +29,17 @@
             @php
                 $i = 1; 
             @endphp
-            @foreach($query as $p)
+            @foreach($query as $u)
             <tr>
                 <th scope="row">{{$i}}</th>
-                <td>{{$p->id_producto}}</td>
-                <td>{{$p->nombre}}</td>
-                <td>{{$p->descripcion}}</td>
-                <td>{{$p->precio}}</td>
-                <td>{{$p->categoria->nom_categoria}}</td>
-                <td><img class="card-img-top" src='{{url("/img/$p->fotoproducto")}}' alt="Card image cap" ></td>
+                <td>{{$u->id}}</td>
+                <td>{{$u->name}}</td>
+                <td>{{$u->email}}</td>
+                <td>{{$u->Rol->nombre}}</td>
+                <td>{{$u->created_at}}</td>
                 <td>
-                    <div class="btn-group">
-                        <div class="mr-2">
-                            <a href="{{ route('editar_pro', $p->id_producto) }}" class="btn btn-outline-primary">Editar</a>
-                        </div>
-                        <div>
-                            <a href="{{ route('eliminar_pro', $p->id_producto) }}" class="btn btn-outline-danger">Eliminar</a>
-                        </div>
-                    </div>
+                <a href="{{ route('eliminar_usu', $u->id) }}" class="btn btn-outline-danger">Eliminar</a>       
                 </td>
-
                 @php 
                     $i = $i + 1;
                 @endphp
