@@ -31,7 +31,7 @@ class Producto extends Controller
       return view ('productos.herramientas',  compact('herramientas'));
    }
    public function almacenamiento(){
-      $herramientas= Product::where('id_categoria', '=', 40)->get();
+      $almacenamientos= Product::where('id_categoria', '=', 40)->get();
       return view ('productos.almacenamientos',compact('almacenamientos') );
    }
 
