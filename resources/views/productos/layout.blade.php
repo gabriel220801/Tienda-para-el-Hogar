@@ -39,11 +39,39 @@
             </div>
 
             <div class="controles-usuario">
+<<<<<<< HEAD
                 <a href="{{ route('ver.carrito') }}">
                     <ion-icon name="cart"></ion-icon>
                 </a>
                 <a href="/login" id="btn-sign-up">LOGIN</a>
                 <a href="/register" id="btn-sign-up">LOG OUT</a>
+=======
+                
+                @if (Route::has('login'))
+                    <div class="sm:fixed sm:top-0 sm:right-0 p-6 text-right z-10">
+                        @auth
+                            @if(auth()->user()->hasRole('admin'))
+                                <a href="{{ url('/admin/dashboard') }}" class="">Admin Dashboard</a>
+                            @else
+                                <ion-icon name="cart" style="margin-right: 38px;"></ion-icon> 
+                                
+                                <span class="user-name">{{ auth()->user()->name }}</span> <!-- Aplicando una clase para estilos personalizados -->
+                            @endif
+                            &nbsp;&nbsp;&nbsp;&nbsp; <!-- Añadiendo espacios entre el nombre y el enlace de Logout -->
+                            <a href="{{ route('logout') }}" class="" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form>
+                        @else
+                            <a href="{{ route('login') }}" class="">Inicio de Sesion</a> &nbsp; &nbsp; &nbsp; &nbsp;
+                            @if (Route::has('register'))
+                                <a href="{{ route('register') }}" class="">Registro</a>
+                            @endif
+                        @endauth
+                    </div>
+                @endif
+
+>>>>>>> 60e666eb2627991e81c2086f2178cba7aabf87d2
                 <ion-icon id="btn-menu" name="menu"></ion-icon>
             </div>
         </div>

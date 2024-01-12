@@ -13,14 +13,14 @@ class Dashboard extends Controller
 {
     public function obtener()
     {
-        $cantidadP = Product::all()
-            ->select('id_categoria', DB::raw('count(*) as cantidad'))
-            ->groupBy('id_categoria')
-            ->get();
+        // $cantidadP = Product::all()
+        //     ->select('id_categoria', DB::raw('count(*) as cantidad'))
+        //     ->groupBy('id_categoria')
+        //     ->get();
 
-        $cantidadU = Users::all()->count();
+        // $cantidadU = Users::all()->count();
 
-        return view('dashboard', ['cantidadP'=> $cantidadP]);
+        return view('dashboard');
     }
 }
 

@@ -42,7 +42,6 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
 
 
 Route::get('/productos/muebles', [App\Http\Controllers\Producto::class, 'muebles'])->name('listado_productom');
@@ -113,8 +112,24 @@ Route::get('admin/usuarios/eliminar/{id}', [App\Http\Controllers\Usuario::class,
 Route::get('register', [App\Http\Controllers\Auth\RegisteredUserController::class, 'store']
 )->name('registrar');
 
+<<<<<<< HEAD
 // CARRITO
 
 
 Route::get('/ver-carrito', [CarritoController::class, 'verCarrito'])->name('ver.carrito');
 Route::post('/carrito/agregar/{idProducto}', [CarritoController::class, 'agregarAlCarrito'])->name('carrito.agregar');
+=======
+
+
+Route::middleware(['auth', 'checkRole:administrador'])->group(function () {
+    // Rutas accesibles solo para usuarios con el rol 'administrador'
+    Route::get('/dashboard', 'App\Http\Controllers\Dashboard@obtener');
+});
+
+Route::middleware(['auth', 'checkRole:usuario'])->group(function () {
+    // Rutas accesibles solo para usuarios con el rol 'usuario'
+    Route::get('productos.listado', 'Producto@home');
+});
+
+require __DIR__.'/auth.php';
+>>>>>>> 60e666eb2627991e81c2086f2178cba7aabf87d2
