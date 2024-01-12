@@ -54,11 +54,14 @@ class User extends Authenticatable
         });
     }
 
+    // Usuario pertenece a un rol específico. 
+    // 'id_rol' especifica la clave foránea que se utiliza para la relación.
     public function rol()
     {
         return $this->belongsTo(Rol::class, 'id_rol');
     }
 
+    // Verifica si el usuario tiene ese rol.
     public function hasRole($role)
     {
         return optional($this->rol)->nombre === $role;
