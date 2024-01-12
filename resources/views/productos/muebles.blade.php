@@ -21,6 +21,9 @@
                             <b>Categoría:</b> {{$m->categoria->nombre}} <br>
                             <b>Precio: $</b>{{$m->precio}} <br>
                         </p>
+                        
+
+
                     </div>
                 </div>
             </div>

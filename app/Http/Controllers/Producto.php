@@ -17,7 +17,11 @@ class Producto extends Controller
       return view ('productos.listado', compact('producto'));
    }
 
-   
+   public function getKeyName()
+{
+    return 'id'; // O el nombre de tu clave primaria
+}
+
    public function muebles(){
       $muebles = Product::where('id_categoria', '=', 10)->get();
       return view('productos.muebles', compact('muebles'));
@@ -43,9 +47,9 @@ class Producto extends Controller
    }
    
    public function form_registro(){
-      $registro = categoria::all();
-      return view('admin.productos.form_registro', compact('registro'));
-   }
+      $producto = Product::all(); // O cualquier lógica para obtener productos según tus necesidades
+      return view('admin.productos.form_registro', compact('producto'));
+  }
    
    public function registrar(Request $request){
          $producto = new Product();
@@ -97,9 +101,6 @@ class Producto extends Controller
           return redirect()->back()->with('error', 'Error al actualizar el producto: ' . $e->getMessage());
       }
   }
-  
-
-   
 
    public function eliminar($id){
          

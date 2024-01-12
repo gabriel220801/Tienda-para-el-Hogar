@@ -45,9 +45,6 @@ class Category extends Controller
             return redirect()->route('listado_categorias');
         
     }
-    
-  
-     
   
      public function eliminar($id){
            

@@ -13,6 +13,7 @@ use  App\Models\herramienta;
 use  App\Models\mueble;
 use  App\Models\Rol;
 use  App\Models\Users;
+use App\Http\Controllers\CarritoController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -111,3 +112,9 @@ Route::get('admin/usuarios/eliminar/{id}', [App\Http\Controllers\Usuario::class,
 
 Route::get('register', [App\Http\Controllers\Auth\RegisteredUserController::class, 'store']
 )->name('registrar');
+
+// CARRITO
+
+
+Route::get('/ver-carrito', [CarritoController::class, 'verCarrito'])->name('ver.carrito');
+Route::post('/carrito/agregar/{idProducto}', [CarritoController::class, 'agregarAlCarrito'])->name('carrito.agregar');
