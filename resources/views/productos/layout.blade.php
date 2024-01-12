@@ -38,12 +38,8 @@
                 </ul>
             </div>
 
-            <div class="controles-usuario">
-                <ion-icon name="cart"></ion-icon>
-                <a href="/login" id="btn-sign-up">LOGIN</a>
-                <a href="/register" id="btn-sign-up">LOG OUT</a>
-                <ion-icon id="btn-menu" name="menu"></ion-icon>
-            </div>
+            <!--  -->
+
             
         </div>
     </header>
